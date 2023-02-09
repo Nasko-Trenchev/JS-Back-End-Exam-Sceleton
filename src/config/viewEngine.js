@@ -1,4 +1,5 @@
 const handlebars = require('express-handlebars');
+const path = require('path')
 
 
 function viewEngine(app){
@@ -7,7 +8,7 @@ function viewEngine(app){
         extname: 'hbs'
     }))
     app.set('view engine', 'hbs');
-    app.set('views', 'src/views')
+    app.set('views',  path.join(__dirname, '../views'))
 }
 
 module.exports = viewEngine;

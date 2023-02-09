@@ -5,9 +5,9 @@ const config = require('../config')
 
 exports.register = async (username, email, password, repass) => {
     
-    const existingUser = this.findByUsername(username);
+   const existingUser = await this.findByUsername(username);
 
-    if(existingUser){
+   if(existingUser){
 
         throw "This user exists!";
     }

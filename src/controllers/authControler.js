@@ -14,7 +14,8 @@ exports.postLogin = async (req, res) =>{
     }
     catch(err) {
         //Error handling
-        //return res.render('login', {error: err})
+        // const errors = Object.keys(err.errors).map(key => err.errors[key].message)
+        //return res.render('register', {error: errors[0]})
     }
     res.redirect('/');
 }
@@ -28,19 +29,14 @@ exports.postRegister = async (req, res) =>{
 
     const {username, email, password, repass} = req.body;
 
-    const existingUser = authService.findByUsername(username);
-
-    if(existingUser){
-
-        throw "This user exists!";
+    try{
+        const token = await authService.register(username, email, password, repass);
+        res.cookie('auth', token);
     }
-
-    if(password !== repass){
-
-        throw "Password missmatch!";
+    catch(err){
+        //Error handling
+        //return res.render('register', {error: err.message})
     }
-    
-    const user = await authService.register({username, email, password, repass});
 
     res.redirect('/');
 }

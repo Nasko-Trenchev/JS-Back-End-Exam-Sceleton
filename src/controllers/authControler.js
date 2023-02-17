@@ -28,9 +28,8 @@ exports.postLogin = async (req, res) =>{
      res.cookie('auth', token);
     }
     catch(err) {
-        //Error handling
-        //const errors = Object.keys(err.errors).map(key => err.errors[key].message)
-        //return res.render('login', {error: errors[0]})
+        const errors = Object.keys(err.errors).map(key => err.errors[key].message)
+        return res.render('login', {error: errors[0]})
     }
     res.redirect('/');
 }
@@ -44,7 +43,7 @@ exports.postRegister = async (req, res) =>{
    
    const {username, email, password, repass} = req.body;
 
-   const existingUser = await this.findByUsername(username);
+   const existingUser = await authService.findByUsername(username);
 
    if(existingUser){
 

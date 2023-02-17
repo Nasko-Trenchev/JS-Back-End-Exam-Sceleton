@@ -8,7 +8,7 @@ const config = {
     },
     
     development: {
-        PORT: 5000,
+        PORT: 3000,
           //Change database location
         DB_URI: 'mongodb://127.0.0.1:27017/examPrep',
         SECRET: "MySecret"

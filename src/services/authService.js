@@ -3,7 +3,7 @@ const jwt = require('../lib/jsonwebtoken');
 const config = require('../config')
 
 
-exports.register = async (username, email, password, repass) => {
+exports.register = async (username, email, password) => {
     
     await User.create({username, email, password})
     

@@ -28,6 +28,7 @@ exports.isAuthenticated = (req, res, next) =>{
     if(!req.isAuthenticated){
 
         res.redirect('/login');
+        res.clearCookie();
     }
     next();
 }

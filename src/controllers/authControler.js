@@ -51,11 +51,11 @@ exports.postRegister = async (req, res) =>{
 
     }
 
-    if(password.length < 4){
-        
-        return res.render('register', {error: "Password too short!"}) 
+    //if(password.length < 4){
 
-    }
+       // return res.render('register', {error: "Password too short!"}) 
+
+   // }
 
     if(password !== repass){
 
